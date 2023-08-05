@@ -1,0 +1,14 @@
+@import 'normalize.css';
+
+body {
+  background-color: #242424;
+}
+
+canvas {
+  display: block;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
