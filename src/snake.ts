@@ -18,7 +18,7 @@ export default class Snake {
     this.gameWidth = this.scene.game.config.width as number
     this.gameHeight = this.scene.game.config.height as number
     this.lastMoveTime = 0
-    this.moveInterval = 200
+    this.moveInterval = 100
     this.tileSize = 16
 
     const { tileSize, gameWidth, gameHeight } = this
@@ -92,11 +92,11 @@ export default class Snake {
 
   private listenSwipe() {
     const hammer = new Hammer(this.scene.game.canvas)
-    hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL })
+    const { DIRECTION_ALL, DIRECTION_LEFT, DIRECTION_RIGHT, DIRECTION_UP, DIRECTION_DOWN } = Hammer
+    hammer.get('swipe').set({ direction: DIRECTION_ALL })
 
     hammer.on('swipe', (event) => {
       const { LEFT, RIGHT, UP, DOWN } = Phaser.Math.Vector2
-      const { DIRECTION_LEFT, DIRECTION_RIGHT, DIRECTION_UP, DIRECTION_DOWN } = Hammer
       const { direction } = this
 
       if (event.direction === DIRECTION_LEFT && direction !== RIGHT) this.direction = LEFT

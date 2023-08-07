@@ -9,13 +9,13 @@ const Main = class extends Phaser.Scene {
   }
 
   public create() {
-    this.snake = new Snake(this)
     this.input.addPointer(1)
     this.input.setTopOnly(false)
+    this.snake = new Snake(this)
   }
 
-  public update(delta: number) {
-    this.snake.update(delta)
+  public update(time: number) {
+    this.snake.update(time)
   }
 }
 
