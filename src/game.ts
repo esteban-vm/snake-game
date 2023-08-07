@@ -1,12 +1,13 @@
 import '@/game.css'
 import Phaser from 'phaser'
-import resize from '@/resize'
+import Main from '@/main'
 
-window.addEventListener('load', function () {
-  const config: Phaser.Types.Core.GameConfig = {}
-  const game = new Phaser.Game(config)
+const config: Phaser.Types.Core.GameConfig = {
+  width: 640,
+  height: 640,
+  type: Phaser.AUTO,
+  scene: [Main],
+  scale: { autoCenter: Phaser.Scale.CENTER_BOTH, mode: Phaser.Scale.FIT },
+}
 
-  this.focus()
-  resize(game)
-  this.addEventListener('resize', () => resize(game))
-})
+export default new Phaser.Game(config)
