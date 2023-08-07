@@ -11,7 +11,7 @@ export default class Snake {
   private body: Phaser.GameObjects.Rectangle[]
   private apple: Phaser.GameObjects.Rectangle
   private direction: Phaser.Math.Vector2
-  private cursors: Phaser.Types.Input.Keyboard.CursorKeys
+  private keys: Phaser.Types.Input.Keyboard.CursorKeys
 
   constructor(scene: Phaser.Scene) {
     this.scene = scene
@@ -28,7 +28,7 @@ export default class Snake {
     this.body = [head]
     this.apple = apple
     this.direction = Phaser.Math.Vector2.DOWN
-    this.cursors = this.scene.input.keyboard!.createCursorKeys()
+    this.keys = this.scene.input.keyboard!.createCursorKeys()
 
     this.placeApple()
     this.listenArrowKeys()
@@ -80,8 +80,8 @@ export default class Snake {
   private listenArrowKeys() {
     this.scene.input.keyboard!.on('keydown', () => {
       const { LEFT, RIGHT, UP, DOWN } = Phaser.Math.Vector2
-      const { direction, cursors } = this
-      const { down, left, up, right } = cursors
+      const { direction, keys } = this
+      const { down, left, up, right } = keys
 
       if (left.isDown && direction !== RIGHT) this.direction = LEFT
       if (right.isDown && direction !== LEFT) this.direction = RIGHT
